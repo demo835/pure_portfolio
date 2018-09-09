@@ -1,0 +1,520 @@
+/*////////////////////////////
+//
+// My Portfolio Page
+// CSS file
+//
+////////////////////////////*/
+
+body {
+  background-color: springgreen;
+}
+.flexBox {
+  /* display flex so divs will arrange horizontally */
+  display: flex;
+  /* move everything down from top */
+  margin-top: 3%;
+}
+
+.projShell {
+  display: inline-block;
+  /* controls east-west position of all divs on screen */
+  margin-left: 44%;
+}
+
+.iconContainer {
+  display: inline-block;
+  color: lightslategray;
+  /* how far icons are from top of screen */
+  margin-top: 7%;
+  /* how far icons are from projShell */
+  margin-left: 6%;
+  /* place perspective on parent. transform on children... */
+  perspective: 40em;
+  /* origin of perspective is the center of screen */
+  perspective-origin: 50% 50%;
+}
+
+.nameShell {
+  display: inline-block;
+  width: 200%;
+  /* margin-left: 20%; */
+}
+
+/*/////////////////////////
+//
+// Location of names list
+//
+/////////////////////////*/
+
+.name {
+  /* width: 95%; */
+  /* transform-style: preserve-3d; */
+  margin-top: 35%;
+}
+
+.nameLi {
+  /* shows pointer as a hand */
+  cursor: pointer;
+  /* get rid of list bullets */
+  list-style-type: none;
+}
+
+.nameContainer {
+  /* The visual slant of the names... */
+  transform: rotate3d(0, 1, 0, 30deg) translateZ(0) scale(1);
+  /* The direction the names move on hover... */
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  /* The font of my name */
+  font-family: 'Passion One', cursive;
+}
+
+.nameA {
+  position: relative;
+  /* Color of my name only. Not date. */
+  color: white;
+  /* Get rid of underlining because it is a link */
+  text-decoration: none;
+  /* Make all letters uppercase */
+  text-transform: uppercase;
+  font-size: 7.6vw;
+  /* Space between letters */
+  letter-spacing: 0.08em;
+  /* Space between lines */
+  line-height: 0.9em;
+
+  transition: color 0.5s, opacity 0.5s;
+}
+
+/* enter data-info */
+
+.nameA:before {
+  /* What content are we grabbing... */
+  content: attr(data-info);
+  /* white-space: pre; */
+  position: absolute;
+  top: 3.7em;
+  left: -250px;
+  width: 200px;
+  text-align: right;
+  /* Size of dates text. Used to be 0.7vw */
+  font-size: 3.7vw;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1em;
+  /* color of date text */
+  color:#000 !important;
+  pointer-events: none;
+  transition: none;
+}
+
+/* Stylings for slash */
+
+.nameA:after {
+  /* content '' adds a slash */
+  content: '';
+  position: absolute;
+  /* position of the slash */
+  top: 0.15em;
+  left: 4.7em;
+  width: 2px;
+  height: 0.85em;
+  /* color of the slash */
+  background-color: white;
+  /* angle of the slash */
+  transform: rotateZ(-25deg);
+  /* control the pointer */
+  pointer-events: none;
+}
+
+:not(.intro) .nameLi:hover .nameContainer {
+  /* animation when you hover on names */
+  transform: rotate3d(0, 1, 0, -10deg) translateZ(0) scale(1);
+  /* time it takes for animation to complete */
+  transition-duration: 1.5s;
+}
+
+.nameLi.isSelected .nameContainer, 
+.nameLi.isSelected:hover .nameContainer {
+
+  transform: rotate3d(0, 1, 0, 0deg) translateZ(0) scale(1);
+
+}
+
+:not(.intro) .name.isHovering .nameLi:hover a {
+
+  transition-duration: 0.3s;
+}
+
+/* My name subtitle */
+
+.subtitleA {
+  color: white;
+  font-size: 1.9vw;
+  letter-spacing: 0.08em;
+}
+
+/*//////////////////////////////
+//
+// Location of projects list
+//
+//////////////////////////////*/
+
+.stagePerspective {
+  position: relative;
+  /* Where names appear on the screen. 100% is far right */
+  width: 50%;
+  /* Changes the perspective */
+  perspective: 100vw;
+  /* align-items: right;
+  justify-content: flex-end; */
+}
+
+/* :not(.isMobile) {
+
+  .stagePerspective {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+} */
+
+.stageContainer {
+  /* position: relative; */
+  /* width: 100%; */
+  /* transform: translateZ(0); */
+  /* transform-style: preserve-3d; */
+  /* align-items: right;
+  justify-content: flex-end; */
+}
+
+.stage {
+  position: fixed;
+  /* top: 0; */
+  /* left: 0; */
+  /* display: flex; */
+  align-items: right;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 5vw 5vw calc(7.5vw + 67px) 0;
+  transform-style: preserve-3d;
+  opacity: 1;
+  transition: opacity 1s;
+  will-change: transform;
+
+}
+
+
+.projects {
+  /* position: relative; */
+  /* margin: 0; */
+  /* padding-left: 0; */
+  /* remove bullet points for list items */
+  list-style: none;
+  text-align: right;
+  width: 95%;
+  transform-style: preserve-3d;
+
+}
+
+.projectsLi {
+  cursor: pointer;
+  /* transform-style: preserve-3d; */
+
+}
+
+/*///////////////////////////////////////////////////////
+//
+// Control how the project names look in default state
+//
+///////////////////////////////////////////////////////*/
+
+.projectContainer {
+  /* The visual slant of the names... */
+  transform: rotate3d(0, 1, 0, -45deg) translateZ(0) scale(1);
+  /* The direction the names move on hover... */
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  /* font of project names */
+  font-family: 'Passion One', cursive;
+  
+
+}
+
+/*//////////////////////////////////
+//
+// Hover effects on project names
+//
+//////////////////////////////////*/
+
+:not(.intro) .projectsLi:hover .projectContainer {
+  /* animation when you hover on names */
+  transform: rotate3d(0, 1, 0, -10deg) translateZ(0) scale(1);
+  /* time it takes for animation to complete */
+  transition-duration: 1.8s;
+}
+
+.projectsLi.isSelected .projectContainer, 
+.projectsLi.isSelected:hover .projectContainer {
+
+  transform: rotate3d(0, 1, 0, 0deg) translateZ(0) scale(1);
+
+}
+
+:not(.intro) .projects.isHovering .projectsLi:hover a {
+
+  transition-duration: 0.3s;
+
+}
+
+/*///////////////////////////////////////
+//
+// Styling effects for the project names
+//
+///////////////////////////////////////*/
+
+.projectsA {
+  /* Color of project names only. Not date. */
+  color: #000;
+  /* Get rid of underlining because it is a link */
+  text-decoration: none;
+  /* Make all letters uppercase */
+  text-transform: uppercase;
+  /* size of text */
+  font-size: 7.6vw;
+  /* Space between letters */
+  letter-spacing: 0.08em;
+  /* Space between lines */
+  line-height: 0.9em;
+  /* tell the element to act like a div, and ignore display and flex formatting */
+  float: right;
+
+  transition: color 0.5s, opacity 0.5s;
+}
+
+/*/////////////////////////////////
+//
+// Add the dates from data-info
+//
+/////////////////////////////////*/
+
+.projectsA:before {
+  /* What content are we grabbing... */
+  content: attr(data-info);
+  /* white-space: pre; */
+  position: absolute;
+  top: 4.8em;
+  left: -550px;
+  width: 200px;
+  /* align to left side of box */
+  text-align: left;
+  /* Size of dates text. Used to be 0.7vw */
+  font-size: 3.7vw;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1em;
+  /* color of date text */
+  color:#000 !important;
+  pointer-events: none;
+  transition: none;
+}
+
+/*/////////////////////
+//
+// Stylings for slash
+//
+/////////////////////*/
+
+.projectsA:after {
+  /* place the slash... */
+  content: '';
+  position: absolute;
+  top: 0.15em;
+  left: -4.6em;
+  width: 2px;
+  height: 0.85em;
+  background-color: #000;
+  transform: rotateZ(25deg);
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1320px) {
+  
+  .projectsA {
+
+    font-size: 7.4vw;
+
+  
+
+  }
+
+  .projectsA:after {
+    width: 2px;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  overflow-x: hidden;
+
+  .stagePerspective {
+     -webkit-overflow-scrolling: touch;
+    perspective: 400vw;
+  }
+
+  .stage {
+    padding-top: 17vw;
+    padding-bottom: 17vw;
+  }
+
+  .projectContainer {
+
+    /* change here so adventure doesn't overlap */
+  }
+
+  .projectsA {
+    /* @supports ((-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000)) {
+      -webkit-text-stroke-width: 1px;
+      text-stroke-width: 1px;
+    } */
+  }
+
+  .projectsA:after {
+    width: 1px;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+
+  .stage {
+    padding-top: 25vw;
+  }
+
+  .projectsA:before {
+    top: 10px;
+    left: -220px;
+    font-size: 7px;
+  }
+
+  .projectsA:after {
+    top: 10px;
+    left: -15px;
+  }
+
+  .projects {
+    width: 100%;
+  }
+
+  .projectsA {
+    font-size: 13vw;
+    letter-spacing: normal;
+  }
+
+  .linkIcon {
+    font-size: 15px;
+  }
+
+  .ghIcon {
+    font-size: 15px;
+  }
+
+}
+
+.linkIcon {
+  /* color: lightslategray; */
+  /* display: block; */
+  /* margin: 30px 0px 30px -50px; */
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotateX(13deg) translateZ(1em);
+  /* transform: translateZ(5em); */
+}
+
+.ghIcon {
+  /* color: lightslategray;
+  display: block; */
+  /* margin: 75px 0px 75px -30px; */
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotateX(13deg) translateZ(3em);
+}
+
+.gaIcon {
+  /* color: lightslategray;
+  display: block; */
+  /* margin: 120px -30px 120px -30px; */
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotateX(-13deg) translateZ(3em);
+}
+
+.resumeIcon {
+  /* color: lightslategray;
+  display: block; */
+  /* margin: 120px -30px 120px -30px; */
+  font-size: 30px;
+  cursor: pointer;
+  transform: rotateX(-13deg) translateZ(1em);
+}
+
+
+
+@media screen and (max-width: 767px) {
+  /* .linkIcon {
+    font-size: 20px;
+  }
+
+  .ghIcon {
+    font-size: 20px;
+  } */
+
+  .allIcons {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  /* .linkIcon {
+    font-size: 15px;
+  }
+
+  .ghIcon {
+    font-size: 15px;
+  } */
+
+  .allIcons {
+    font-size: 15px;
+  }
+}
+
+p {
+  text-align: center;
+  font-weight: 600;
+  /* height: 0.85em; */
+  color: lightslategray;
+}
+
+.line {
+  color: lightslategray;
+  stroke: lightslategray;
+  padding-left: 10;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* .parallaxPerspective {
+  perspective-origin: 50% var(--perspective-origin-y);
+  will-change: perspective-origin;
+} */
+
+/* @keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
